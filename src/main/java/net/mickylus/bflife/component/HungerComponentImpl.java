@@ -2,7 +2,10 @@ package net.mickylus.bflife.component;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.pig.Pig;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.Level;
@@ -15,10 +18,11 @@ import java.util.Objects;
 public class HungerComponentImpl implements HungerComponent, ServerTickingComponent {
 
     private int hunger = 100;
-    private final Pig pig;
 
-    public HungerComponentImpl(Pig pig) {
-        this.pig = pig;
+    private final Animal animal;
+
+    public HungerComponentImpl(Animal animal) {
+        this.animal = animal;
     }
 
     @Override
@@ -32,14 +36,13 @@ public class HungerComponentImpl implements HungerComponent, ServerTickingCompon
     @Override
     public void serverTick() {
 
-        if (pig.tickCount % 100 == 0) {
+        if (animal.tickCount % 100 == 0) {
             setHunger(hunger - 10);
         }
         if (hunger <= 0) {
-            BFLBetterFarmLife.LOGGER.info("Maiale " + pig.getId() + "è morto di fame");
-            pig.die(pig.damageSources().starve());
-
-            pig.remove(Entity.RemovalReason.KILLED);
+            BFLBetterFarmLife.LOGGER.info("Maiale " + animal.getId() + "è morto di fame");
+            animal.die(animal.damageSources().starve());
+            animal.remove(Entity.RemovalReason.KILLED);
         }
     }
 

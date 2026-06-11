@@ -5,6 +5,8 @@ import net.fabricmc.api.ModInitializer;
 import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.creativemodetab.ModCreativeModeTabs;
 import net.mickylus.bflife.item.ModItems;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.pig.Pig;
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
 import org.slf4j.Logger;
@@ -22,7 +24,7 @@ public class BFLBetterFarmLife implements ModInitializer, EntityComponentInitial
 		ModCreativeModeTabs.registerModCreativeModeTabs();
 	}
 	@Override
-	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
+	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry){
 		ModComponents.registerEntityComponents(registry);
 	}
 }

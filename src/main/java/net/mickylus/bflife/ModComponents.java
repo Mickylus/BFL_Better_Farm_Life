@@ -3,6 +3,8 @@ package net.mickylus.bflife;
 import net.mickylus.bflife.component.HungerComponent;
 import net.mickylus.bflife.component.HungerComponentImpl;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.cow.Cow;
 import net.minecraft.world.entity.animal.pig.Pig;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
@@ -17,11 +19,8 @@ public class ModComponents {
             );
 
     public static void registerEntityComponents(EntityComponentFactoryRegistry registry) {
-        registry.registerFor(
-                Pig.class,
-                HUNGER,
-                HungerComponentImpl::new
-        );
+        registry.registerFor(Pig.class,HUNGER,HungerComponentImpl::new);
+        registry.registerFor(Cow.class,HUNGER,HungerComponentImpl::new);
     }
 
     public static void registerModComponents(){
