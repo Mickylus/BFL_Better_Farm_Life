@@ -18,10 +18,19 @@
 		"main": [
 			"net.mickylus.bflife.BFLBetterFarmLife"
 		],
+		"cardinal-components": [
+			"net.mickylus.bflife.BFLBetterFarmLife"
+		],
 		"fabric-datagen": [
 			"net.mickylus.bflife.BFLBetterFarmLifeDataGenerator"
 		]
 	},
+	"custom": {
+		"cardinal-components": [
+			"bflife:hunger"
+		]
+	},
+
 	"mixins": [
 		"bflife.mixins.json"
 	],
