@@ -3,9 +3,9 @@
 	"id": "bflife",
 	"version": "${version}",
 	"name": "[BFL] Better Farm Life",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This mod completely reinvents the farming system in minecraft",
 	"authors": [
-		"Me!"
+		"Mickylus"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -27,7 +27,7 @@
 	},
 	"custom": {
 		"cardinal-components": [
-			"bflife:hunger"
+			"bflife:animal_data"
 		]
 	},
 

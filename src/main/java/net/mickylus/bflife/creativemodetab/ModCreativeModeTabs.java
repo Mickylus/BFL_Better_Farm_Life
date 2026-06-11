@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativemodetab.bflife.bfl_tab"))
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.ANIMAL_SCANNER);
+                        output.accept(ModItems.ANIMAL_TAMER);
                     }).build());
 
 
