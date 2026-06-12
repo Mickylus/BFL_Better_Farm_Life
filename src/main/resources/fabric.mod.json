@@ -15,15 +15,10 @@
 	"icon": "assets/bflife/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"net.mickylus.bflife.BFLBetterFarmLife"
-		],
-		"cardinal-components": [
-			"net.mickylus.bflife.BFLBetterFarmLife"
-		],
-		"fabric-datagen": [
-			"net.mickylus.bflife.BFLBetterFarmLifeDataGenerator"
-		]
+		"main": ["net.mickylus.bflife.BFLBetterFarmLife"],
+		"client": ["net.mickylus.bflife.BFLBetterFarmLifeClient"],
+		"cardinal-components": ["net.mickylus.bflife.BFLBetterFarmLife"],
+		"fabric-datagen": ["net.mickylus.bflife.BFLBetterFarmLifeDataGenerator"]
 	},
 	"custom": {
 		"cardinal-components": [

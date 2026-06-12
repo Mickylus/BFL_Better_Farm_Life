@@ -28,7 +28,8 @@ public class AnimalTamer extends Item {
                     );
                     data.setHunger(100);
                     data.setWildStatus(false);
-                    return InteractionResult.CONSUME;
+                    itemStack.consume(1,player);
+                    return InteractionResult.SUCCESS;
                 }else{
                     player.sendOverlayMessage(
                             Component.literal("This animal is already tamed")

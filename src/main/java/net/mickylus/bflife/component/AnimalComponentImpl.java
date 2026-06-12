@@ -2,6 +2,7 @@ package net.mickylus.bflife.component;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
@@ -94,6 +95,8 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
                     animal.kill(serverLevel);
                 }
             }
+
+
         }
     }
 

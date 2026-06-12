@@ -2,9 +2,11 @@ package net.mickylus.bflife;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.creativemodetab.ModCreativeModeTabs;
 import net.mickylus.bflife.item.ModItems;
+import net.mickylus.bflife.networking.AnimalDataPayload;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.pig.Pig;
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -22,6 +24,8 @@ public class BFLBetterFarmLife implements ModInitializer, EntityComponentInitial
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModCreativeModeTabs.registerModCreativeModeTabs();
+
+		PayloadTypeRegistry.clientboundPlay().register(AnimalDataPayload.TYPE, AnimalDataPayload.CODEC);
 	}
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry){
