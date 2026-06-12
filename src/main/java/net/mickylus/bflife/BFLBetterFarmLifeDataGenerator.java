@@ -2,6 +2,8 @@ package net.mickylus.bflife;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.mickylus.bflife.datagen.ModBlockLootTableProvider;
+import net.mickylus.bflife.datagen.ModBlockTagsProvider;
 import net.mickylus.bflife.datagen.ModModelProvider;
 
 public class BFLBetterFarmLifeDataGenerator implements DataGeneratorEntrypoint {
@@ -10,5 +12,8 @@ public class BFLBetterFarmLifeDataGenerator implements DataGeneratorEntrypoint {
 		var pack = fabricDataGenerator.createPack();
 
 		pack.addProvider(ModModelProvider::new);
+		pack.addProvider(ModBlockLootTableProvider::new);
+		pack.addProvider(ModBlockTagsProvider::new);
+
 	}
 }

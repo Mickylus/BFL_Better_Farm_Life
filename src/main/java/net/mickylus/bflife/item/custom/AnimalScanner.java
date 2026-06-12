@@ -8,6 +8,8 @@ import net.mickylus.bflife.screen.AnimalScannerScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.effects.PlaySoundEffect;
 
 public class AnimalScanner extends Item {
     public AnimalScanner(Properties properties) {
@@ -28,6 +31,14 @@ public class AnimalScanner extends Item {
                 AnimalDataComponent data = ModComponents.ANIMAL_DATA.get(animal);
                 if(data.isWild()){
                     player.sendOverlayMessage(Component.literal("This Animal is wild"));
+                    player.level().playSound(
+                            null,
+                            player.blockPosition(),
+                            SoundEvents.PIGLIN_HURT,
+                            SoundSource.PLAYERS,
+                            1.0f,
+                            0.2f
+                    );
                 } else {
                     // Manda i dati al client
                     ServerPlayNetworking.send(
@@ -36,7 +47,8 @@ public class AnimalScanner extends Item {
                                     data.getHunger(),
                                     data.getMood(),
                                     data.getProduction(),
-                                    data.isWild()
+                                    data.isWild(),
+                                    animal.getId()
                             )
                     );
                 }

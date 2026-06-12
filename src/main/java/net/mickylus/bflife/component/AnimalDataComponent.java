@@ -11,6 +11,7 @@ public interface AnimalDataComponent extends ComponentV3, ServerTickingComponent
     String getMother();
     String getFather();
 
+
     void setHunger(int value);
     void setMood(String mood);
     void setProduction(float value);
