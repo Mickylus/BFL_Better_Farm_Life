@@ -2,8 +2,11 @@ package net.mickylus.bflife.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.mickylus.bflife.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,6 +19,7 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.SMALL_MANGER);
     }
 }

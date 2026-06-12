@@ -2,12 +2,14 @@ package net.mickylus.bflife.datagen;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.item.ModItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -24,6 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.ANIMAL_SCANNER,ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANIMAL_TAMER,ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(Item.BY_BLOCK.get(ModBlocks.SMALL_MANGER), ModelTemplates.FLAT_ITEM);
     }
 
     private void createBlockMultipleFaces(Block block, BlockModelGenerators blockModelGenerators) {

@@ -2,6 +2,7 @@ package net.mickylus.bflife.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
+import net.mickylus.bflife.block.ModBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
@@ -24,7 +25,7 @@ public class ModBlockLootTableProvider extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-
+        dropSelf(ModBlocks.SMALL_MANGER);
     }
 
     public LootTable.Builder createMultipleDrops(final Block block, Item item, float minDrops, float maxDrops) {
