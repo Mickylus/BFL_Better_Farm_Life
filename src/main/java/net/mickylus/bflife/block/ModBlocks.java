@@ -14,6 +14,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public class ModBlocks {
+    public static final Block SMALL_MANGER = registerBlock("small_manger", Block::new);
+
     private static Block registerBlock (String name, Function<BlockBehaviour.Properties, Block> function){
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,name))));
         registerBlockItem(name, toRegister);

@@ -2,6 +2,7 @@ package net.mickylus.bflife.creativemodetab;
 
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.mickylus.bflife.BFLBetterFarmLife;
+import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.item.ModItems;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,6 +21,7 @@ public class ModCreativeModeTabs {
                     .displayItems((parameters, output) -> {
                         output.accept(ModItems.ANIMAL_SCANNER);
                         output.accept(ModItems.ANIMAL_TAMER);
+                        output.accept(ModBlocks.SMALL_MANGER);
                     }).build());
 
 
