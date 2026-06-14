@@ -1,6 +1,7 @@
 package net.mickylus.bflife.block;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
+import net.mickylus.bflife.block.custom.SmallFeeder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -19,6 +20,12 @@ public class ModBlocks {
             .strength(3f)
             .requiresCorrectToolForDrops()
             .sound(SoundType.CROP)
+    ));
+
+    public static final Block SMALL_FEEDER = registerBlock("small_feeder", properties -> new SmallFeeder(properties
+            .strength(3f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
     ));
 
     private static Block registerBlock (String name, Function<BlockBehaviour.Properties, Block> function){
