@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ANIMAL_TAMER);
                         output.accept(ModBlocks.SMALL_MANGER);
                         output.accept(ModBlocks.SMALL_FEEDER);
+                        output.accept(ModBlocks.FEEDER);
                     }).build());
 
 
