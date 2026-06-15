@@ -3,6 +3,7 @@ package net.mickylus.bflife.item;
 import net.mickylus.bflife.BFLBetterFarmLife;
 import net.mickylus.bflife.item.custom.AnimalScanner;
 import net.mickylus.bflife.item.custom.AnimalTamer;
+import net.mickylus.bflife.item.custom.RegisterItem;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -16,6 +17,7 @@ public class ModItems {
 
     public static final Item ANIMAL_SCANNER = registerItem("animal_scanner",AnimalScanner::new);
     public static final Item ANIMAL_TAMER = registerItem("animal_tamer", AnimalTamer::new);
+    public static final Item REGISTER = registerItem("register", RegisterItem::new);
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function){
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,name),

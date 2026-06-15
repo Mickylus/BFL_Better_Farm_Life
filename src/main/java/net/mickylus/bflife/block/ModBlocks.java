@@ -1,8 +1,6 @@
 package net.mickylus.bflife.block;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
-import net.mickylus.bflife.block.custom.Feeder;
-import net.mickylus.bflife.block.custom.SmallFeeder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -17,23 +15,17 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public class ModBlocks {
-    public static final Block SMALL_MANGER = registerBlock("small_manger", properties -> new Block(properties
+    /*
+    Example Block
+
+    public static final Block BLOCK_NAME = registerBlock("block_name", properties -> new Block(properties
             .strength(3f)
             .requiresCorrectToolForDrops()
             .sound(SoundType.CROP)
     ));
+    */
 
-    public static final Block SMALL_FEEDER = registerBlock("small_feeder", properties -> new SmallFeeder(properties
-            .strength(3f)
-            .requiresCorrectToolForDrops()
-            .sound(SoundType.WOOD)
-    ));
 
-    public static final Block FEEDER = registerBlock("feeder", properties -> new Feeder(properties
-            .strength(3f)
-            .requiresCorrectToolForDrops()
-            .sound(SoundType.WOOD)
-    ));
 
     private static Block registerBlock (String name, Function<BlockBehaviour.Properties, Block> function){
         Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,name))));

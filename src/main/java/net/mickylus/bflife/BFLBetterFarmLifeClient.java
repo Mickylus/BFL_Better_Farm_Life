@@ -1,24 +1,16 @@
 package net.mickylus.bflife;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.mickylus.bflife.networking.AnimalDataPayload;
-import net.mickylus.bflife.screen.AnimalScannerScreen;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
+import net.mickylus.bflife.screen.ModScreenHandlers;
+import net.mickylus.bflife.screen.custom.animalscanner.AnimalScannerScreen;
+import net.mickylus.bflife.screen.custom.registeritem.RegisterScreen;
+import net.mickylus.bflife.screen.custom.registeritem.RegisterScreenHandler;
+import net.minecraft.client.gui.screens.MenuScreens;
 
 public class BFLBetterFarmLifeClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ClientPlayNetworking.registerGlobalReceiver(AnimalDataPayload.TYPE, (payload, context) -> {
-            context.client().execute(() -> {
-                Minecraft.getInstance().setScreen(
-                        new AnimalScannerScreen(
-                                Component.translatable("screen.bflife.animal_scanner_screen"),
-                                payload
-                        )
-                );
-            });
-        });
+        MenuScreens.register(ModScreenHandlers.ANIMAL_SCANNER, AnimalScannerScreen::new);
+        MenuScreens.register(ModScreenHandlers.REGISTER_SCREEN, RegisterScreen::new);
     }
 }

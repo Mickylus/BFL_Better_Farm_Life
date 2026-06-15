@@ -19,7 +19,6 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.SMALL_MANGER);
+
     }
 }

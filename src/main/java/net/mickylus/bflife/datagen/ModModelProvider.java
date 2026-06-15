@@ -26,7 +26,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
         itemModelGenerators.generateFlatItem(ModItems.ANIMAL_SCANNER,ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANIMAL_TAMER,ModelTemplates.FLAT_ITEM);
-        itemModelGenerators.generateFlatItem(Item.byBlock(ModBlocks.FEEDER),ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.REGISTER,ModelTemplates.FLAT_ITEM);
     }
 
     private void createBlockMultipleFaces(Block block, BlockModelGenerators blockModelGenerators) {

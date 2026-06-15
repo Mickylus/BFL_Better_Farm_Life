@@ -1,10 +1,8 @@
 {
   "item.bflife.animal_scanner": "Animal Scanner",
   "item.bflife.animal_tamer": "Animal Tamer",
+  "item.bflife.register": "Register",
 
-  "block.bflife.small_manger": "Small Manger",
-  "block.bflife.small_feeder": "Small Feeder",
-  "block.bflife.feeder": "Feeder",
 
   "creativemodetab.bflife.bfl_tab": "BFL: Better Farm Life",
   "screen.bflife.animal_scanner_screen": "Animal Scanner Screen"

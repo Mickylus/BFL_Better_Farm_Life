@@ -3,7 +3,7 @@ package net.mickylus.bflife.item.custom;
 import net.fabricmc.fabric.api.menu.v1.ExtendedMenuProvider;
 import net.mickylus.bflife.ModComponents;
 import net.mickylus.bflife.component.AnimalDataComponent;
-import net.mickylus.bflife.screen.custom.animalscanner.AnimalScannerScreenHandler;
+import net.mickylus.bflife.screen.custom.registeritem.RegisterScreenHandler;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -18,9 +18,8 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class AnimalScanner extends Item {
-
-    public AnimalScanner(Properties properties) {
+public class RegisterItem extends Item {
+    public RegisterItem(Properties properties) {
         super(properties);
     }
 
@@ -41,7 +40,7 @@ public class AnimalScanner extends Item {
                         1.0f, 0.2f
                 );
             } else {
-                AnimalScannerScreenHandler.Data screenData = new AnimalScannerScreenHandler.Data(
+                RegisterScreenHandler.Data screenData = new RegisterScreenHandler.Data(
                         animal.getId(),
                         data.getHunger(),
                         data.getMood()   != null ? data.getMood()   : "neutral",
@@ -54,7 +53,7 @@ public class AnimalScanner extends Item {
                 ((ServerPlayer) player).openMenu(
                         new ExtendedMenuProvider() {
                             @Override
-                            public AnimalScannerScreenHandler.Data getScreenOpeningData(ServerPlayer player) {
+                            public RegisterScreenHandler.Data getScreenOpeningData(ServerPlayer player) {
                                 return screenData;
                             }
 
@@ -65,7 +64,7 @@ public class AnimalScanner extends Item {
 
                             @Override
                             public AbstractContainerMenu createMenu(int syncId, Inventory inv, Player p) {
-                                return new AnimalScannerScreenHandler(syncId, inv, screenData);
+                                return new RegisterScreenHandler(syncId, inv, screenData);
                             }
                         }
                 );

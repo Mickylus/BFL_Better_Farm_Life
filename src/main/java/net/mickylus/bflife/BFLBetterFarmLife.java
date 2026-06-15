@@ -7,6 +7,7 @@ import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.creativemodetab.ModCreativeModeTabs;
 import net.mickylus.bflife.item.ModItems;
 import net.mickylus.bflife.networking.AnimalDataPayload;
+import net.mickylus.bflife.screen.ModScreenHandlers;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.pig.Pig;
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
@@ -24,6 +25,7 @@ public class BFLBetterFarmLife implements ModInitializer, EntityComponentInitial
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModCreativeModeTabs.registerModCreativeModeTabs();
+		ModScreenHandlers.registerModScreenHandlers();
 
 		PayloadTypeRegistry.clientboundPlay().register(AnimalDataPayload.TYPE, AnimalDataPayload.CODEC);
 	}
