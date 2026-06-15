@@ -1,10 +1,10 @@
 package net.mickylus.bflife.screen.custom.registeritem;
 
 import net.mickylus.bflife.screen.ModScreenHandlers;
-import net.mickylus.bflife.screen.custom.animalscanner.AnimalScannerScreenHandler;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -14,9 +14,12 @@ public class RegisterScreenHandler extends AbstractContainerMenu {
 
     private final Data data;
 
+    private final int entityId;
+
     public RegisterScreenHandler(int syncId, Inventory playerInventory, Data data){
         super(ModScreenHandlers.REGISTER_SCREEN, syncId);
         this.data = data;
+        this.entityId = data.entityId;
     }
 
     public Data getData() {
@@ -30,7 +33,11 @@ public class RegisterScreenHandler extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        return false;
+        Entity entity = player.level().getEntity(entityId);
+        if (entity == null) {
+            return false;
+        }
+        return player.distanceToSqr(entity) < 64.0; // 8 Blocchi
     }
 
     public record Data(
