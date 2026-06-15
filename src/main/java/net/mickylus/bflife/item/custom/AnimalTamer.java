@@ -44,6 +44,7 @@ public class AnimalTamer extends Item {
         data.setWildStatus(false);
         data.setHunger(100);
         data.setMood("Neutral");
+        data.setProduction(1);
         if(animal.is(EntityType.PIG)){
             data.setBaseMultiplier(3);
         }

@@ -1,10 +1,7 @@
 package net.mickylus.bflife.item;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
-import net.mickylus.bflife.item.custom.AnimalTamer;
-import net.mickylus.bflife.item.custom.ControlStaff;
-import net.mickylus.bflife.item.custom.DebugGetProduct;
-import net.mickylus.bflife.item.custom.RegisterItem;
+import net.mickylus.bflife.item.custom.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -21,6 +18,7 @@ public class ModItems {
     public static final Item MOD_BOOK = registerItem("mod_book", Item::new);
     public static final Item DEBUG_PRODUCT = registerItem("test_get_product", DebugGetProduct::new);
     public static final Item CONTROL_STAFF = registerItem("control_staff", ControlStaff::new);
+    public static final Item ANIMAL_TRACKER = registerItem("animal_tracker", AnimalTracker::new);
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function){
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,name),

@@ -3,8 +3,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "bflife:item/control_staff.png",
-		"particle": "bflife:item/control_staff.png"
+		"0": "bflife:item/control_staff",
+		"particle": "bflife:item/control_staff"
 	},
 	"elements": [
 		{

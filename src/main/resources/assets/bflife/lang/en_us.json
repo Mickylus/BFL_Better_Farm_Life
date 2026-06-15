@@ -1,12 +1,14 @@
 {
-  "item.bflife.animal_scanner": "Animal Scanner",
   "item.bflife.animal_tamer": "Animal Tamer",
   "item.bflife.register": "Register",
   "item.bflife.mod_book": "BFL Tutorial",
   "item.bflife.test_get_product": "Debug: GetProducts()",
   "item.bflife.control_staff": "Control Staff",
+  "item.bflife.animal_tracker": "Tracker",
+
+  "key.bflife.switch_mode": "Switch Control Staff Mode",
+  "key.categories.bflife.general": "BFL: Better Farm Life",
 
 
-  "creativemodetab.bflife.bfl_tab": "BFL: Better Farm Life",
-  "screen.bflife.animal_scanner_screen": "Animal Scanner Screen"
+  "creativemodetab.bflife.bfl_tab": "BFL: Better Farm Life"
 }
