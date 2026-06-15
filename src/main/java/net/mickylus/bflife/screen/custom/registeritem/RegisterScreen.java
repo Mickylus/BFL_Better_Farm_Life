@@ -3,17 +3,20 @@ package net.mickylus.bflife.screen.custom.registeritem;
 import net.mickylus.bflife.BFLBetterFarmLife;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
-import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.Screen;
+
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import org.joml.Matrix3x2fStack;
 
-public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandler> {
+public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenHandler> {
 
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(
             BFLBetterFarmLife.MOD_ID,"textures/gui/register.png"
@@ -24,8 +27,21 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
 
     private LivingEntity targetEntity;
 
+    private static final int STATS_START = 52;
+    private static final int STATS_GAP = 12;
+    private static final int ENTITY_X = 40;
+    private static final int ENTITY_Y = 16;
+
+    private final RegisterScreenHandler handler;
+
     public RegisterScreen(RegisterScreenHandler handler, Inventory playerInventory, Component title) {
-        super(handler, playerInventory, title);
+        super(title);
+        this.handler = handler;
+    }
+
+    @Override
+    public RegisterScreenHandler getMenu() {
+        return handler;
     }
 
     @Override
@@ -33,7 +49,7 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
         super.init();
         // Recupera l'entità dal mondo client tramite ID
         if (Minecraft.getInstance().level != null) {
-            Entity e = Minecraft.getInstance().level.getEntity(menu.getData().entityId());
+            Entity e = Minecraft.getInstance().level.getEntity(handler.getData().entityId());
             if (e instanceof LivingEntity living) {
                 targetEntity = living;
             }
@@ -44,7 +60,7 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
         super.extractRenderState(graphics, mouseX, mouseY, delta);
 
-        RegisterScreenHandler.Data data = menu.getData();
+        RegisterScreenHandler.Data data = handler.getData();
 
         Matrix3x2fStack matrices = graphics.pose();
         matrices.pushMatrix();
@@ -57,11 +73,21 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
                 TEXTURE_WIDTH, TEXTURE_HEIGHT, 256, 256);
 
         // Testo dati animale
-        graphics.text(this.font, "Hunger: "    + data.hunger()     + "/100", 40, 16, 0xFF0d192b, false);
-        graphics.text(this.font, "Mood: "      + data.mood(),               40, 28, 0xFF0d192b, false);
-        graphics.text(this.font, "Production: "+ data.production(),          40, 40, 0xFF0d192b, false);
-        graphics.text(this.font, "Mother: "    + data.mother(),              40, 52, 0xFF0d192b, false);
-        graphics.text(this.font, "Father: "    + data.father(),              40, 64, 0xFF0d192b, false);
+        graphics.text(this.font, "Info", 80, 16, 0xFF0d192b,false);
+        graphics.text(this.font, "Name: " + targetEntity.getPlainTextName() , 80, 16 + STATS_GAP, 0xFF0d192b,false);
+        if(targetEntity.getAgeScale()<1.0){
+            graphics.text(this.font, "Age: Baby", 80, 16 + STATS_GAP * 2, 0xFF0d192b,false);
+        }else{
+            graphics.text(this.font, "Age: Adult", 80, 16 + STATS_GAP * 2, 0xFF0d192b,false);
+        }
+
+        graphics.text(this.font, "Hunger: " + data.hunger()     + "/100",40, STATS_START, 0xFF0d192b, false);
+        graphics.text(this.font, "Mood: " + data.mood(),40, STATS_START + STATS_GAP, 0xFF0d192b, false);
+        graphics.text(this.font, "Production",40, STATS_START + (STATS_GAP * 2), 0xFF0d192b, false);
+        graphics.text(this.font, "Rate: " + data.production(),40, STATS_START + (STATS_GAP * 3), 0xFF0d192b, false);
+        graphics.text(this.font, "Products",40, STATS_START + (STATS_GAP * 4), 0xFF0d192b, false);
+        drawProducts(graphics,40,STATS_START+STATS_GAP * 5, 20);
+
 
         // Preview entità
         int guiLeft = (this.width  - TEXTURE_WIDTH)  / 2;
@@ -69,11 +95,11 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
 
         InventoryScreen.extractEntityInInventoryFollowsMouse(
                 graphics,
-                guiLeft + 1,
-                guiTop  + 1,
-                guiLeft + 61,
-                guiTop  + 81,
-                30, 0,
+                guiLeft + ENTITY_X,
+                guiTop  + ENTITY_Y,
+                guiLeft + ENTITY_X + 33,
+                guiTop  + ENTITY_Y + 33,
+                15, 0,
                 mouseX, mouseY,
                 targetEntity
         );
@@ -88,5 +114,32 @@ public class RegisterScreen extends AbstractContainerScreen<RegisterScreenHandle
     @Override
     public boolean isInGameUi() {
         return true;
+    }
+
+    private void drawProducts(GuiGraphicsExtractor graphics,int sectionX,int sectionY, int inBetweenGap) {
+        if(targetEntity.is(EntityType.CHICKEN)){
+            Identifier egg_product =  Identifier .withDefaultNamespace("textures/item/egg.png");
+            Identifier chicken_product =  Identifier .withDefaultNamespace("textures/item/chicken.png");
+            graphics.blit(RenderPipelines.GUI_TEXTURED,egg_product,sectionX,sectionY,0,0,16,16,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,chicken_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+        }
+        if(targetEntity.is(EntityType.PIG)){
+            Identifier porkchop_product =  Identifier .withDefaultNamespace("textures/item/porkchop.png");
+            graphics.blit(RenderPipelines.GUI_TEXTURED,porkchop_product,sectionX,sectionY,0,0,16,16,16,16);
+        }
+        if(targetEntity.is(EntityType.COW)){
+            Identifier milk_product =  Identifier .withDefaultNamespace("textures/item/milk_bucket.png");
+            Identifier beef_product =  Identifier .withDefaultNamespace("textures/item/beef.png");
+            Identifier leather_product =  Identifier .withDefaultNamespace("textures/item/leather.png");
+            graphics.blit(RenderPipelines.GUI_TEXTURED,milk_product,sectionX,sectionY,0,0,16,16,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,beef_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,leather_product,sectionX + inBetweenGap * 2,sectionY,0,0,16,16,16,16);
+        }
+        if(targetEntity.is(EntityType.SHEEP)){
+            Identifier wool_product =  Identifier .withDefaultNamespace("textures/block/white_wool.png");
+            Identifier mutton_product =  Identifier .withDefaultNamespace("textures/item/mutton.png");
+            graphics.blit(RenderPipelines.GUI_TEXTURED,wool_product,sectionX,sectionY,0,0,16,16,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,mutton_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+        }
     }
 }

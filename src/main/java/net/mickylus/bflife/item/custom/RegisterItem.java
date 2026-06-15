@@ -50,6 +50,14 @@ public class RegisterItem extends Item {
                         data.getFather() != null ? data.getFather() : ""
                 );
 
+                player.level().playSound(
+                        null,
+                        player.blockPosition(),
+                        SoundEvents.BOOK_PAGE_TURN,
+                        SoundSource.PLAYERS,
+                        2.0f, 0.2f
+                );
+
                 ((ServerPlayer) player).openMenu(
                         new ExtendedMenuProvider() {
                             @Override
