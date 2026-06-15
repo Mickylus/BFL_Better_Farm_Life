@@ -16,12 +16,12 @@ public class ModCreativeModeTabs {
     public static final CreativeModeTab BFL_TAB = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"bfl_tab"),
             FabricCreativeModeTab.builder()
-                    .icon( () -> new ItemStack(ModItems.ANIMAL_SCANNER))
+                    .icon( () -> new ItemStack(ModItems.MOD_BOOK))
                     .title(Component.translatable("creativemodetab.bflife.bfl_tab"))
                     .displayItems((parameters, output) -> {
-                        output.accept(ModItems.ANIMAL_SCANNER);
                         output.accept(ModItems.ANIMAL_TAMER);
                         output.accept(ModItems.REGISTER);
+                        output.accept(ModItems.MOD_BOOK);
                     }).build());
 
 

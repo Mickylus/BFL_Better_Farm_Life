@@ -1,7 +1,6 @@
 package net.mickylus.bflife.screen.custom.registeritem;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
-import net.mickylus.bflife.screen.custom.animalscanner.AnimalScannerScreenHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

@@ -24,9 +24,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerators) {
-        itemModelGenerators.generateFlatItem(ModItems.ANIMAL_SCANNER,ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.ANIMAL_TAMER,ModelTemplates.FLAT_ITEM);
         itemModelGenerators.generateFlatItem(ModItems.REGISTER,ModelTemplates.FLAT_ITEM);
+        itemModelGenerators.generateFlatItem(ModItems.MOD_BOOK,ModelTemplates.FLAT_ITEM);
     }
 
     private void createBlockMultipleFaces(Block block, BlockModelGenerators blockModelGenerators) {
