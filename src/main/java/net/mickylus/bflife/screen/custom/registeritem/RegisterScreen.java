@@ -86,7 +86,7 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         graphics.text(this.font, "Production",40, STATS_START + (STATS_GAP * 2), 0xFF0d192b, false);
         graphics.text(this.font, "Rate: " + data.production(),40, STATS_START + (STATS_GAP * 3), 0xFF0d192b, false);
         graphics.text(this.font, "Products",40, STATS_START + (STATS_GAP * 4), 0xFF0d192b, false);
-        drawProducts(graphics,40,STATS_START+STATS_GAP * 5, 20);
+        drawProducts(graphics,40,STATS_START + STATS_GAP * 5, 20);
 
 
         // Preview entità
