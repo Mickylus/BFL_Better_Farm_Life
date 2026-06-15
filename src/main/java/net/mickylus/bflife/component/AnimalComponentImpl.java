@@ -12,10 +12,11 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
 
     private int hunger;
     private String mood;
-    private float production;
+    private int production;
     private boolean wild = true;
     private String mother;
     private String father;
+    private int baseMuliplier;
 
     private final Animal animal;
 
@@ -34,13 +35,18 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     }
 
     @Override
-    public float getProduction() {
+    public int getProduction() {
         return production;
     }
 
     @Override
     public boolean isWild() {
         return wild;
+    }
+
+    @Override
+    public int getBaseMultiplier() {
+        return baseMuliplier;
     }
 
     @Override
@@ -64,13 +70,18 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     }
 
     @Override
-    public void setProduction(float value) {
-        this.production = Math.clamp(value,0f,5f);
+    public void setProduction(int value) {
+        this.production = Math.clamp(value,0,5);
     }
 
     @Override
     public void setWildStatus(boolean value) {
         this.wild = value;
+    }
+
+    @Override
+    public void setBaseMultiplier(int value) {
+        this.baseMuliplier = Math.clamp(value,1,5);
     }
 
     @Override
@@ -104,8 +115,9 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     public void readData(ValueInput readView) {
         this.hunger = readView.getIntOr("hunger",100);
         this.mood = readView.getStringOr("mood","neutral");
-        this.production = readView.getFloatOr("production",1f);
+        this.production = readView.getIntOr("production",1);
         this.wild = readView.getBooleanOr("wild",true);
+        this.baseMuliplier = readView.getIntOr("basemultiplier",1);
         this.mother = readView.getStringOr("mother","Mother");
         this.father = readView.getStringOr("father","Father");
     }
@@ -116,6 +128,7 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
         writeView.putString("mood", mood != null ? mood : "neutral");
         writeView.putFloat("production", production);
         writeView.putBoolean("wild", wild);
+        writeView.putInt("basemultiplier", baseMuliplier);
         writeView.putString("mother", mother != null ? mother : "");
         writeView.putString("father", father != null ? father : "");
     }

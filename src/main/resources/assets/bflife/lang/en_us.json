@@ -3,6 +3,7 @@
   "item.bflife.animal_tamer": "Animal Tamer",
   "item.bflife.register": "Register",
   "item.bflife.mod_book": "BFL Tutorial",
+  "item.bflife.test_get_product": "Debug: GetProducts()",
 
 
   "creativemodetab.bflife.bfl_tab": "BFL: Better Farm Life",

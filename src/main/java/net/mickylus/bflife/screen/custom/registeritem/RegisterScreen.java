@@ -47,7 +47,7 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
     @Override
     protected void init(){
         super.init();
-        // Recupera l'entità dal mondo client tramite ID
+        // Get entity from passed ID
         if (Minecraft.getInstance().level != null) {
             Entity e = Minecraft.getInstance().level.getEntity(handler.getData().entityId());
             if (e instanceof LivingEntity living) {
@@ -72,7 +72,7 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, 0, 0, 0f, 0f,
                 TEXTURE_WIDTH, TEXTURE_HEIGHT, 256, 256);
 
-        // Testo dati animale
+        // Animal data
         graphics.text(this.font, "Info", 80, 16, 0xFF0d192b,false);
         graphics.text(this.font, "Name: " + targetEntity.getPlainTextName() , 80, 16 + STATS_GAP, 0xFF0d192b,false);
         if(targetEntity.getAgeScale()<1.0){
@@ -86,10 +86,10 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         graphics.text(this.font, "Production",40, STATS_START + (STATS_GAP * 2), 0xFF0d192b, false);
         graphics.text(this.font, "Rate: " + data.production(),40, STATS_START + (STATS_GAP * 3), 0xFF0d192b, false);
         graphics.text(this.font, "Products",40, STATS_START + (STATS_GAP * 4), 0xFF0d192b, false);
-        drawProducts(graphics,40,STATS_START + STATS_GAP * 5, 20);
+        drawProducts(graphics,40,STATS_START + STATS_GAP * 5, 16,true);
 
 
-        // Preview entità
+        // Preview entity
         int guiLeft = (this.width  - TEXTURE_WIDTH)  / 2;
         int guiTop  = (this.height - TEXTURE_HEIGHT) / 2;
 
@@ -116,30 +116,41 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         return true;
     }
 
-    private void drawProducts(GuiGraphicsExtractor graphics,int sectionX,int sectionY, int inBetweenGap) {
+    private void drawProducts(GuiGraphicsExtractor graphics,int sectionX,int sectionY, int inBetweenGap,boolean enableBorder) {
+
+        Identifier product_border = Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"textures/gui/product_border.png");
+
         if(targetEntity.is(EntityType.CHICKEN)){
             Identifier egg_product =  Identifier .withDefaultNamespace("textures/item/egg.png");
             Identifier chicken_product =  Identifier .withDefaultNamespace("textures/item/chicken.png");
             graphics.blit(RenderPipelines.GUI_TEXTURED,egg_product,sectionX,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX,sectionY,0,0,16,16,16,16);
             graphics.blit(RenderPipelines.GUI_TEXTURED,chicken_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
         }
         if(targetEntity.is(EntityType.PIG)){
             Identifier porkchop_product =  Identifier .withDefaultNamespace("textures/item/porkchop.png");
             graphics.blit(RenderPipelines.GUI_TEXTURED,porkchop_product,sectionX,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX,sectionY,0,0,16,16,16,16);
         }
         if(targetEntity.is(EntityType.COW)){
             Identifier milk_product =  Identifier .withDefaultNamespace("textures/item/milk_bucket.png");
             Identifier beef_product =  Identifier .withDefaultNamespace("textures/item/beef.png");
             Identifier leather_product =  Identifier .withDefaultNamespace("textures/item/leather.png");
             graphics.blit(RenderPipelines.GUI_TEXTURED,milk_product,sectionX,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX,sectionY,0,0,16,16,16,16);
             graphics.blit(RenderPipelines.GUI_TEXTURED,beef_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
             graphics.blit(RenderPipelines.GUI_TEXTURED,leather_product,sectionX + inBetweenGap * 2,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX + inBetweenGap * 2,sectionY,0,0,16,16,16,16);
         }
         if(targetEntity.is(EntityType.SHEEP)){
             Identifier wool_product =  Identifier .withDefaultNamespace("textures/block/white_wool.png");
             Identifier mutton_product =  Identifier .withDefaultNamespace("textures/item/mutton.png");
             graphics.blit(RenderPipelines.GUI_TEXTURED,wool_product,sectionX,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX,sectionY,0,0,16,16,16,16);
             graphics.blit(RenderPipelines.GUI_TEXTURED,mutton_product,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
+            if(enableBorder) graphics.blit(RenderPipelines.GUI_TEXTURED,product_border,sectionX + inBetweenGap,sectionY,0,0,16,16,16,16);
         }
     }
 }
