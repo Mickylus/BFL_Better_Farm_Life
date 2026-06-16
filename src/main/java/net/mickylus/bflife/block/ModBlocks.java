@@ -1,6 +1,7 @@
 package net.mickylus.bflife.block;
 
 import net.mickylus.bflife.BFLBetterFarmLife;
+import net.mickylus.bflife.block.custom.Feeder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -15,17 +16,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import java.util.function.Function;
 
 public class ModBlocks {
-    /*
-    Example Block
 
-    public static final Block BLOCK_NAME = registerBlock("block_name", properties -> new Block(properties
-            .strength(3f)
-            .requiresCorrectToolForDrops()
-            .sound(SoundType.CROP)
-    ));
-    */
-
-    public static final Block FEEDER = registerBlock("feeder",properties -> new Block(properties
+    public static final Block FEEDER = registerBlock("feeder",properties -> new Feeder(properties
             .strength(3f)
             .requiresCorrectToolForDrops()
             .sound(SoundType.WOOD)
