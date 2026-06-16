@@ -83,9 +83,9 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         Identifier led_on = Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"textures/gui/led_on.png");
         Identifier led_off = Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"textures/gui/led_off.png");
         if(data.tracked()){
-            graphics.blit(RenderPipelines.GUI_TEXTURED,led_on,135,16,0,0,8,8,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,led_on,135,16,0,0,8,8,8,8);
         }else{
-            graphics.blit(RenderPipelines.GUI_TEXTURED,led_off,135,16,0,0,8,8,16,16);
+            graphics.blit(RenderPipelines.GUI_TEXTURED,led_off,135,16,0,0,8,8,8,8);
         }
 
         graphics.text(this.font, "Hunger: " + data.hunger()     + "/100",40, STATS_START, 0xFF0d192b, false);
