@@ -7,7 +7,6 @@ import net.mickylus.bflife.block.ModBlockEntities;
 import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.creativemodetab.ModCreativeModeTabs;
 import net.mickylus.bflife.item.ModItems;
-import net.mickylus.bflife.networking.AnimalDataPayload;
 import net.mickylus.bflife.screen.ModScreenHandlers;
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;
