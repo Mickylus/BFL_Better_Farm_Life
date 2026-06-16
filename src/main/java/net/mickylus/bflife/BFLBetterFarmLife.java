@@ -3,6 +3,7 @@ package net.mickylus.bflife;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.mickylus.bflife.block.ModBlockEntities;
 import net.mickylus.bflife.block.ModBlocks;
 import net.mickylus.bflife.creativemodetab.ModCreativeModeTabs;
 import net.mickylus.bflife.item.ModItems;
@@ -24,6 +25,7 @@ public class BFLBetterFarmLife implements ModInitializer, EntityComponentInitial
 		ModBlocks.registerModBlocks();
 		ModCreativeModeTabs.registerModCreativeModeTabs();
 		ModScreenHandlers.registerModScreenHandlers();
+		ModBlockEntities.registerModBlockEntities();
 
 		PayloadTypeRegistry.clientboundPlay().register(AnimalDataPayload.TYPE, AnimalDataPayload.CODEC);
 

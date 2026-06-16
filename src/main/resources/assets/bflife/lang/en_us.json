@@ -11,5 +11,6 @@
 
 
   "creativemodetab.bflife.bfl_tab": "BFL: Better Farm Life",
-  "screen.bflife.control_staff_overlay": "HUD"
+  "screen.bflife.control_staff_overlay": "HUD",
+  "container.bflife.feeder": "Feeder"
 }

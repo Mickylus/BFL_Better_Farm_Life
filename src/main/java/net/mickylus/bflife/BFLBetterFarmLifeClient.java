@@ -15,5 +15,6 @@ public class BFLBetterFarmLifeClient implements ClientModInitializer {
     public void onInitializeClient() {
         MenuScreens.register(ModScreenHandlers.REGISTER_SCREEN, RegisterScreen::new);
 
+
     }
 }

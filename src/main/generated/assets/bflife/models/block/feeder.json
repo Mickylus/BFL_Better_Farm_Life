@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "bflife:block/feeder_bottom",
+    "east": "bflife:block/feeder_side3",
+    "north": "bflife:block/feeder_side4",
+    "particle": "bflife:block/feeder_side4",
+    "south": "bflife:block/feeder_side1",
+    "up": "bflife:block/feeder_top",
+    "west": "bflife:block/feeder_side2"
+  }
+}

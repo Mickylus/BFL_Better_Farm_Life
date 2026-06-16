@@ -80,13 +80,6 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         }else{
             graphics.text(this.font, "Age: Adult", 80, 16 + STATS_GAP * 2, 0xFF0d192b,false);
         }
-        Identifier led_on = Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"textures/gui/led_on.png");
-        Identifier led_off = Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID,"textures/gui/led_off.png");
-        if(data.tracked()){
-            graphics.blit(RenderPipelines.GUI_TEXTURED,led_on,135,16,0,0,8,8,8,8);
-        }else{
-            graphics.blit(RenderPipelines.GUI_TEXTURED,led_off,135,16,0,0,8,8,8,8);
-        }
 
         graphics.text(this.font, "Hunger: " + data.hunger()     + "/100",40, STATS_START, 0xFF0d192b, false);
         graphics.text(this.font, "Mood: " + data.mood(),40, STATS_START + STATS_GAP, 0xFF0d192b, false);
@@ -94,7 +87,11 @@ public class RegisterScreen extends Screen implements MenuAccess<RegisterScreenH
         graphics.text(this.font, "Rate: " + data.production(),40, STATS_START + (STATS_GAP * 3), 0xFF0d192b, false);
         graphics.text(this.font, "Products",40, STATS_START + (STATS_GAP * 4), 0xFF0d192b, false);
         drawProducts(graphics,40,STATS_START + STATS_GAP * 5, 16,true);
-
+        if(data.tracked()) {
+            graphics.text(this.font, "Tracked: Yes", 40, STATS_START + STATS_GAP * 6, 0xFF0d192b, false);
+        }else {
+            graphics.text(this.font, "Tracked: No", 40, STATS_START + STATS_GAP * 6, 0xFF0d192b, false);
+        }
 
         // Preview entity
         int guiLeft = (this.width  - TEXTURE_WIDTH)  / 2;

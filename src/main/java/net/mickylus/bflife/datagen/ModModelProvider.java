@@ -19,7 +19,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-
+        createBlockMultipleFaces(ModBlocks.FEEDER,blockModelGenerators);
     }
 
     @Override

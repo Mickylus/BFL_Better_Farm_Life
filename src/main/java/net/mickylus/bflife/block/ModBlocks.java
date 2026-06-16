@@ -25,6 +25,13 @@ public class ModBlocks {
     ));
     */
 
+    public static final Block FEEDER = registerBlock("feeder",properties -> new Block(properties
+            .strength(3f)
+            .requiresCorrectToolForDrops()
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+    ));
+
 
 
     private static Block registerBlock (String name, Function<BlockBehaviour.Properties, Block> function){

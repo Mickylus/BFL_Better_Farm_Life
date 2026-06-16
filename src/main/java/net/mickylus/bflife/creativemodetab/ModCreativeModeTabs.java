@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.REGISTER);
                         output.accept(ModItems.MOD_BOOK);
                         output.accept(ModItems.ANIMAL_TRACKER);
+                        output.accept(ModBlocks.FEEDER);
                     }).build());
 
 
