@@ -46,6 +46,8 @@ public class RegisterItem extends Item {
                         data.getMood()   != null ? data.getMood()   : "neutral",
                         data.getProduction(),
                         data.isWild(),
+                        data.getBaseMultiplier(),
+                        data.isTracked(),
                         data.getMother() != null ? data.getMother() : "",
                         data.getFather() != null ? data.getFather() : ""
                 );

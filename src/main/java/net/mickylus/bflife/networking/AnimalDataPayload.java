@@ -7,7 +7,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.Identifier;
 
-public record AnimalDataPayload(int hunger, String mood, float production, boolean wild, int entityID) implements CustomPacketPayload {
+public record AnimalDataPayload(int hunger, String mood, float production, boolean wild, int baseMultiplier, boolean tracked , String father, String mother, int entityID) implements CustomPacketPayload {
 
     public static final CustomPacketPayload.Type<AnimalDataPayload> TYPE =
             new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(BFLBetterFarmLife.MOD_ID, "animal_data"));
@@ -17,6 +17,10 @@ public record AnimalDataPayload(int hunger, String mood, float production, boole
             ByteBufCodecs.STRING_UTF8, AnimalDataPayload::mood,
             ByteBufCodecs.FLOAT, AnimalDataPayload::production,
             ByteBufCodecs.BOOL, AnimalDataPayload::wild,
+            ByteBufCodecs.INT, AnimalDataPayload::baseMultiplier,
+            ByteBufCodecs.BOOL, AnimalDataPayload::tracked,
+            ByteBufCodecs.STRING_UTF8, AnimalDataPayload::father,
+            ByteBufCodecs.STRING_UTF8, AnimalDataPayload::mother,
             ByteBufCodecs.INT, AnimalDataPayload::entityID,
             AnimalDataPayload::new
     );

@@ -17,7 +17,6 @@ public class ModItems {
     public static final Item REGISTER = registerItem("register", RegisterItem::new);
     public static final Item MOD_BOOK = registerItem("mod_book", Item::new);
     public static final Item DEBUG_PRODUCT = registerItem("test_get_product", DebugGetProduct::new);
-    public static final Item CONTROL_STAFF = registerItem("control_staff", ControlStaff::new);
     public static final Item ANIMAL_TRACKER = registerItem("animal_tracker", AnimalTracker::new);
 
     private static Item registerItem(String name, Function<Item.Properties, Item> function){

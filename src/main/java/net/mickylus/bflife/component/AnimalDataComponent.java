@@ -9,6 +9,7 @@ public interface AnimalDataComponent extends ComponentV3, ServerTickingComponent
     int getProduction();
     boolean isWild();
     int getBaseMultiplier();
+    boolean isTracked();
     String getMother();
     String getFather();
 
@@ -18,6 +19,7 @@ public interface AnimalDataComponent extends ComponentV3, ServerTickingComponent
     void setProduction(int value);
     void setWildStatus(boolean value);
     void setBaseMultiplier(int value);
+    void setTrackStatus(boolean value);
     void setMother(String mother);
     void setFather(String father);
 }

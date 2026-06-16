@@ -44,8 +44,10 @@ public class RegisterScreenHandler extends AbstractContainerMenu {
             int entityId,
             int hunger,
             String mood,
-            float production,
+            int production,
             boolean wild,
+            int baseMultiplier,
+            boolean tracked,
             String mother,
             String father
     ) {
@@ -54,8 +56,10 @@ public class RegisterScreenHandler extends AbstractContainerMenu {
                         ByteBufCodecs.INT,        Data::entityId,
                         ByteBufCodecs.INT,        Data::hunger,
                         ByteBufCodecs.STRING_UTF8, Data::mood,
-                        ByteBufCodecs.FLOAT,      Data::production,
+                        ByteBufCodecs.INT,      Data::production,
                         ByteBufCodecs.BOOL,       Data::wild,
+                        ByteBufCodecs.INT,      Data::baseMultiplier,
+                        ByteBufCodecs.BOOL,       Data::tracked,
                         ByteBufCodecs.STRING_UTF8, Data::mother,
                         ByteBufCodecs.STRING_UTF8, Data::father,
                         Data::new

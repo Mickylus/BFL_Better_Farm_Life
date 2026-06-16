@@ -22,7 +22,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ANIMAL_TAMER);
                         output.accept(ModItems.REGISTER);
                         output.accept(ModItems.MOD_BOOK);
-                        output.accept(ModItems.CONTROL_STAFF);
                         output.accept(ModItems.ANIMAL_TRACKER);
                     }).build());
 

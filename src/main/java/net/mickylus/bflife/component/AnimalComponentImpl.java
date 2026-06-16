@@ -17,6 +17,7 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     private String mother;
     private String father;
     private int baseMuliplier;
+    private boolean tracked = false;
 
     private final Animal animal;
 
@@ -47,6 +48,11 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     @Override
     public int getBaseMultiplier() {
         return baseMuliplier;
+    }
+
+    @Override
+    public boolean isTracked() {
+        return tracked;
     }
 
     @Override
@@ -85,6 +91,11 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     }
 
     @Override
+    public void setTrackStatus(boolean value) {
+        this.tracked = value;
+    }
+
+    @Override
     public void setMother(String mother) {
         this.mother = mother;
     }
@@ -114,10 +125,11 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     @Override
     public void readData(ValueInput readView) {
         this.hunger = readView.getIntOr("hunger",100);
-        this.mood = readView.getStringOr("mood","neutral");
+        this.mood = readView.getStringOr("mood","Neutral");
         this.production = readView.getIntOr("production",1);
         this.wild = readView.getBooleanOr("wild",true);
         this.baseMuliplier = readView.getIntOr("basemultiplier",1);
+        this.tracked = readView.getBooleanOr("tracked",false);
         this.mother = readView.getStringOr("mother","Mother");
         this.father = readView.getStringOr("father","Father");
     }
@@ -125,10 +137,11 @@ public class AnimalComponentImpl implements AnimalDataComponent, ServerTickingCo
     @Override
     public void writeData(ValueOutput writeView) {
         writeView.putInt("hunger", hunger);
-        writeView.putString("mood", mood != null ? mood : "neutral");
+        writeView.putString("mood", mood != null ? mood : "Neutral");
         writeView.putFloat("production", production);
         writeView.putBoolean("wild", wild);
         writeView.putInt("basemultiplier", baseMuliplier);
+        writeView.putBoolean("tracked", tracked);
         writeView.putString("mother", mother != null ? mother : "");
         writeView.putString("father", father != null ? father : "");
     }
