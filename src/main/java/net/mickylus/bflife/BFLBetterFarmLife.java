@@ -27,8 +27,6 @@ public class BFLBetterFarmLife implements ModInitializer, EntityComponentInitial
 		ModScreenHandlers.registerModScreenHandlers();
 		ModBlockEntities.registerModBlockEntities();
 
-		PayloadTypeRegistry.clientboundPlay().register(AnimalDataPayload.TYPE, AnimalDataPayload.CODEC);
-
 	}
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry){
